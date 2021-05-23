@@ -1,3 +1,0 @@
-0000000000000000000000000000000000000000 178a0f160584d8649dee583604cf516fc6559154 User <User@Desktop> 1621131060 +0900	commit (initial): Collection Injection
-178a0f160584d8649dee583604cf516fc6559154 101c7b1e32442587ec55a5d0eae62152dde3ea76 User <User@Desktop> 1621147987 +0900	commit: To not compile files more than 2times Use in parallel with annotation and XML, which means do not use IoC merit.
-101c7b1e32442587ec55a5d0eae62152dde3ea76 3097e5628d28a129d27ba36a786044f79bcf1d1e User <User@Desktop> 1621679853 +0900	commit (amend): It is related to DB connection.
