@@ -24,6 +24,10 @@ public class SampleServiceClient {
 		for (SampleVO sample : sampleList) {
 			System.out.println("---> " + sample.toString());
 		}
+		
+		vo.setId(32);
+		sampleService.deleteSample(vo);
+		
 		// 3. 스프링 컨테이너 종료
 		container.close();
 	}

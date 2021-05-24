@@ -22,7 +22,7 @@ public class SampleDAOJDBC implements SampleDAO {
 	// SQL 명령어들
 	private final String SAMPLE_INSERT = "INSERT INTO SAMPLE(ID, TITLE, REG_USER, CONTENT, REG_DATE) VALUES ((SELECT NVL(MAX(ID), 0) + 1 FROM SAMPLE), ?, ?, ?, SYSDATE)";
 	private final String SAMPLE_UPDATE = "UPDATE SAMPLE SET TITLE=?, REG_USER=?, CONTENT=? WHERE ID=?";
-	private final String SAMPLE_DELETE = "DELETE FROM SAMPLE WHERE ID between 15 and 16";
+	private final String SAMPLE_DELETE = "DELETE FROM SAMPLE WHERE ID=?";
 	private final String SAMPLE_GET = "SELECT ID, TITLE, REG_USER, CONTENT, REG_DATE FROM SAMPLE WHERE id=?";
 	private final String SAMPLE_LIST = "SELECT ID, TITLE, REG_USER, CONTENT, REG_DATE FROM SAMPLE ORDER BY REG_DATE DESC";
 
@@ -58,6 +58,7 @@ public class SampleDAOJDBC implements SampleDAO {
 		System.out.println("===> JDBC로 deleteSample() 기능 처리");
 		conn = JDBCUtil.getConnection();
 		stmt = conn.prepareStatement(SAMPLE_DELETE);
+		stmt.setInt(1,  vo.getId());
 		stmt.executeUpdate();
 		JDBCUtil.close(stmt,  conn);
 	}
