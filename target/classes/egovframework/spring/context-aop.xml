@@ -7,13 +7,13 @@
 
 
 <!-- 횡단관심에 해당하는 Advice 등록 -->
-<bean id="advice" class="egovframework.sample.service.common.AdvancedSampleAdvice"></bean>
+<bean id="advice" class="egovframework.sample.service.common.SampleAdvice"></bean>
 
 <!-- AOP 설정 -->
 <aop:config>
 	<aop:pointcut id="allPointcut" expression="execution(* egovframework.sample..*Impl.*(..))" />
 	<aop:aspect ref="advice">
-	<aop:before pointcut-ref="allPointcut" method="advancedBeforeLogic" />
+	<aop:before pointcut-ref="allPointcut" method="beforeLogic" />
 	</aop:aspect>
 </aop:config>
 
