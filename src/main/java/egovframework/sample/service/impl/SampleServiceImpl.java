@@ -12,7 +12,7 @@ import egovframework.sample.service.SampleVO;
 
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService {
-	@Resource(name="daoJDBC")
+	@Resource(name="daoSpring")
 	private SampleDAO sampleDAO;
 	
 	public void insertSample(SampleVO vo) throws Exception {

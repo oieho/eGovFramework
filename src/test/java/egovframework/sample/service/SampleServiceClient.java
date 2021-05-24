@@ -8,8 +8,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class SampleServiceClient {
 	public static void main(String[] args) throws Exception {
 		// 1. Spring 컨테이너를 구동한다.
-		AbstractApplicationContext container = new GenericXmlApplicationContext("egovframework/spring/context-common.xml");
-		
+		AbstractApplicationContext container = new GenericXmlApplicationContext("egovframework/spring/context-*.xml");
 		// 2. Spring 컨테이너로부터 SampleServiceImpl 객체를 Lookup한다.
 		SampleService sampleService = (SampleService) container.getBean("sampleService");
 		SampleVO vo = new SampleVO();

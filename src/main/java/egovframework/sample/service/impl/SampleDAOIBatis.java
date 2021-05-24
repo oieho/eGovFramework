@@ -27,9 +27,11 @@ public class SampleDAOIBatis implements SampleDAO {
 	
 	public SampleVO selectSample(SampleVO vo) throws Exception {
 		System.out.println("===> iBatis로 selectSample() 기능 처리");
+		return vo;
 	}
 	
 	public List<SampleVO> selectSampleList(SampleVO vo) throws Exception {
 		System.out.println("===> iBatis로 selectSampleList() 기능 처리");
+		return null;
 	}
 }
