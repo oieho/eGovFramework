@@ -17,6 +17,9 @@ public class SampleServiceImpl implements SampleService {
 	private SampleDAO sampleDAO;
 	
 	public void insertSample(SampleVO vo) throws Exception {
+		if(vo.getId() == 0) {
+			throw new IllegalArgumentException("0번 아이디는 등록할 수 없습니다.");
+		}
 		sampleDAO.insertSample(vo);
 	}
 	

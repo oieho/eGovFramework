@@ -16,7 +16,9 @@
 	
 	<aop:aspect ref="advice">
 	<aop:before pointcut-ref="allPointcut" method="beforeLogic" />
-	<aop:after pointcut-ref="selectPointcut" method="afterLogic" />
+	<aop:after-returning pointcut-ref="selectPointcut" method="afterReturningLogic" />
+	<aop:after-throwing pointcut-ref="allPointcut" method="afterThrowingLogic"/>
+	<aop:after pointcut-ref="allPointcut" method="afterLogic" />
 	</aop:aspect>
 </aop:config>
 
