@@ -13,13 +13,14 @@ import egovframework.sample.service.common.AdvancedSampleAdvice;
 
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService {
-	@Resource(name="daoJDBC")
+	@Resource(name="daoSpring")
 	private SampleDAO sampleDAO;
 	
 	public void insertSample(SampleVO vo) throws Exception {
 		if(vo.getId() == 0) {
 			throw new IllegalArgumentException("0번 아이디는 등록할 수 없습니다.");
 		}
+		sampleDAO.insertSample(vo);
 		sampleDAO.insertSample(vo);
 	}
 	

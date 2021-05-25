@@ -1,5 +1,8 @@
 package egovframework.sample.service.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,14 +12,17 @@ import org.springframework.stereotype.Repository;
 
 import egovframework.sample.service.SampleDAO;
 import egovframework.sample.service.SampleVO;
+import egovframework.sample.service.common.JDBCUtil;
 
 @Repository("daoSpring")
 public class SampleDAOSpring implements SampleDAO {
 	@Resource(name="jdbcTemplate")	
 	private JdbcTemplate spring;
-	
+	private Connection conn;
+	private PreparedStatement stmt;
+	private ResultSet rs;
 	//SQL 명령어들
-	private final String SAMPLE_INSERT = "INSERT INTO SAMPLE(ID, TITLE, REG_USER, CONTENT, REG_DATE) VALUES ((SELECT NVL(MAX(ID), 0) + 1 FROM SAMPLE), ?, ?, ?, SYSDATE)";
+	private final String SAMPLE_INSERT = "INSERT INTO SAMPLE(ID, TITLE, REG_USER, CONTENT, REG_DATE) VALUES (?, ?, ?, ?, SYSDATE)";
 	private final String SAMPLE_UPDATE = "UPDATE SAMPLE SET TITLE=?, REG_USER=?, CONTENT=?, WHERE ID=?";
 	private final String SAMPLE_DELETE = "DELETE FROM SAMPLE WHERE ID=?";
 	private final String SAMPLE_GET = "SELECT ID, TITLE, REG_USER, CONTENT, REG_DATE FROM SAMPLE WHERE ID=?";
@@ -44,9 +50,22 @@ public class SampleDAOSpring implements SampleDAO {
 	}
 
 	public SampleVO selectSample(SampleVO vo) throws Exception {
-		System.out.println("===> Spring으로 selectSample() 기능 처리");
-		Object[] args = {vo.getId()};
-		return spring.queryForObject(SAMPLE_GET, args, new SampleRowMapper());
+		System.out.println("===> JDBC로 selectSample() 기능 처리");
+		SampleVO sample = null;
+		conn = JDBCUtil.getConnection();
+		stmt = conn.prepareStatement(SAMPLE_GET);
+		stmt.setInt(1,  vo.getId());
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			sample = new SampleVO();
+			sample.setId(rs.getInt("ID"));
+			sample.setTitle(rs.getString("TITLE"));
+			sample.setRegUser(rs.getString("REG_USER"));
+			sample.setContent(rs.getString("CONTENT"));
+			sample.setRegDate(rs.getDate("REG_DATE"));
+		}
+		JDBCUtil.close(rs, stmt, conn);
+		return sample;
 	}
 		
 	public List<SampleVO> selectSampleList(SampleVO vo) throws Exception {

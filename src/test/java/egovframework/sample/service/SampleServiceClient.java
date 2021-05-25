@@ -12,12 +12,11 @@ public class SampleServiceClient {
 		// 2. Spring 컨테이너로부터 SampleServiceImpl 객체를 Lookup한다.
 		SampleService sampleService = (SampleService) container.getBean("sampleService");
 		SampleVO vo = new SampleVO();
-		vo.setId(10);
+		vo.setId(2);
 		vo.setTitle("임시 제목");
 		vo.setRegUser("테스터");
 		vo.setContent("임시 내용입니다.....");
 		sampleService.insertSample(vo);
-		sampleService.selectSample(vo);
 
 		List<SampleVO> sampleList = sampleService.selectSampleList(vo);
 		System.out.println("[ Sample LIST ]");
@@ -26,7 +25,7 @@ public class SampleServiceClient {
 		}
 		
 		
-		sampleService.deleteSample(vo);
+//		sampleService.deleteSample(vo);
 		
 		// 3. 스프링 컨테이너 종료
 		container.close();
