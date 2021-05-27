@@ -34,7 +34,7 @@ public class SampleDAOSpring implements SampleDAO {
 	
 	public void insertSample(SampleVO vo) throws Exception {
 		System.out.println("===> Spring으로 insertSample() 기능 처리");
-		Object[] args = {vo.getTitle(), vo.getRegUser(), vo.getContent()};
+		Object[] args = {vo.getId(), vo.getTitle(), vo.getRegUser(), vo.getContent()};
 		spring.update(SAMPLE_INSERT, args);
 	}
 	

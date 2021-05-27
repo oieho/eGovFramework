@@ -49,7 +49,7 @@ public class SampleDAOJDBC implements SampleDAO {
 		stmt.setString(1,  vo.getTitle());
 		stmt.setString(2,  vo.getRegUser());
 		stmt.setString(3,  vo.getContent());
-		stmt.setInt(4,  vo.getId());
+		stmt.setString(4,  vo.getId());
 		stmt.executeUpdate();
 		JDBCUtil.close(stmt,  conn);
 	}
@@ -58,7 +58,7 @@ public class SampleDAOJDBC implements SampleDAO {
 		System.out.println("===> JDBC로 deleteSample() 기능 처리");
 		conn = JDBCUtil.getConnection();
 		stmt = conn.prepareStatement(SAMPLE_DELETE);
-		stmt.setInt(1,  vo.getId());
+		stmt.setString(1, vo.getId());
 		stmt.executeUpdate();
 		JDBCUtil.close(stmt,  conn);
 	}
@@ -68,11 +68,11 @@ public class SampleDAOJDBC implements SampleDAO {
 		SampleVO sample = null;
 		conn = JDBCUtil.getConnection();
 		stmt = conn.prepareStatement(SAMPLE_GET);
-		stmt.setInt(1,  vo.getId());
+		stmt.setString(1, vo.getId());
 		rs = stmt.executeQuery();
 		if(rs.next()) {
 			sample = new SampleVO();
-			sample.setId(rs.getInt("ID"));
+			sample.setId(rs.getString("ID"));
 			sample.setTitle(rs.getString("TITLE"));
 			sample.setRegUser(rs.getString("REG_USER"));
 			sample.setContent(rs.getString("CONTENT"));
@@ -90,7 +90,7 @@ public class SampleDAOJDBC implements SampleDAO {
 		rs = stmt.executeQuery();
 		while(rs.next()){
 			SampleVO sample = new SampleVO();
-			sample.setId(rs.getInt("ID"));
+			sample.setId(rs.getString("ID"));
 			sample.setTitle(rs.getString("TITLE"));
 			sample.setRegUser(rs.getString("REG_USER"));
 			sample.setContent(rs.getString("CONTENT"));

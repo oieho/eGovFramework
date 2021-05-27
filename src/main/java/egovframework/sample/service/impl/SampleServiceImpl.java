@@ -6,21 +6,23 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.sample.service.SampleDAO;
 import egovframework.sample.service.SampleService;
 import egovframework.sample.service.SampleVO;
-import egovframework.sample.service.common.AdvancedSampleAdvice;
 
 @Service("sampleService")
 public class SampleServiceImpl implements SampleService {
 	@Resource(name="daoSpring")
 	private SampleDAO sampleDAO;
 	
+	@Resource(name="egovIdGnrService")
+	private EgovIdGnrService egovIdGnrService;
+	
 	public void insertSample(SampleVO vo) throws Exception {
-		if(vo.getId() == 0) {
-			throw new IllegalArgumentException("0번 아이디는 등록할 수 없습니다.");
-		}
-		sampleDAO.insertSample(vo);
+		/** ID Generation Service */
+		String id = egovIdGnrService.getNextStringId();
+		vo.setId(id);
 		sampleDAO.insertSample(vo);
 	}
 	
