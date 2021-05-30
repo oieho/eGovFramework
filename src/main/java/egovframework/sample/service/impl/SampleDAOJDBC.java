@@ -19,6 +19,17 @@ public class SampleDAOJDBC implements SampleDAO {
 	private PreparedStatement stmt;
 	private ResultSet rs;
 	
+	private String title;
+	
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	// SQL 명령어들
 	private final String SAMPLE_INSERT = "INSERT INTO SAMPLE(ID, TITLE, REG_USER, CONTENT, REG_DATE) VALUES ((SELECT NVL(MAX(ID), 0) + 1 FROM SAMPLE), ?, ?, ?, SYSDATE)";
 	private final String SAMPLE_UPDATE = "UPDATE SAMPLE SET TITLE=?, REG_USER=?, CONTENT=? WHERE ID=?";
