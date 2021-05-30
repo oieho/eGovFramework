@@ -10,7 +10,7 @@ import egovframework.sample.service.impl.SampleDAOJDBC;
 //@Controller
 public class SelectSampleController {
 	
-	@RequestMapping(value="/selectSample.do")
+//	@RequestMapping(value="/selectSample.do")
 	public ModelAndView selectSample(SampleVO vo, SampleDAOJDBC sampleDAO, ModelAndView mav) throws Exception {
 //		System.out.println("샘플 상세 조회 처리");
 //		
