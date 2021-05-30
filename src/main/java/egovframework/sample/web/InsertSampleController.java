@@ -2,17 +2,17 @@ package egovframework.sample.web;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import egovframework.sample.service.SampleVO;
 import egovframework.sample.service.impl.SampleDAOJDBC;
 
-@Controller
+//@Controller
 public class InsertSampleController {
 	
 	@RequestMapping(value="/insertSample.do")
-	public void insertSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
+	public String insertSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
 		System.out.println("샘플 등록 처리");
 		
 //		// 1. 사용자 입력 정보 추출
@@ -28,6 +28,7 @@ public class InsertSampleController {
 //		
 //		SampleDAOJDBC sampleDAO = new SampleDAOJDBC();
 		sampleDAO.insertSample(vo);
+		return "forward:selectSampleList.do";
 		
 	}
 }
