@@ -24,11 +24,9 @@ public class SelectSampleListController implements Controller {
 		SampleDAOJDBC sampleDAO = new SampleDAOJDBC();
 		List<SampleVO> sampleList = sampleDAO.selectSampleList(vo);
 
-		// 3. 검색 결과를 세션에 저장하고 목록 화면으로 이동한다.
-		HttpSession session = request.getSession();
-		session.setAttribute("sampleList", sampleList);
-		
+		// 3. 검색 결과를 ModelAndView에 저장하고 목록 화면으로 이동한다.
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("sampleList", sampleList);
 		mav.setViewName("selectSampleList.jsp");
 		return mav;
 	 

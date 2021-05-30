@@ -4,12 +4,10 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <% 
 	// 1. DB 연동 처리
-	SampleVO vo = new SampleVO();
-	SampleDAOJDBC sampleDAO = new SampleDAOJDBC();
-	List<SampleVO> sampleList = sampleDAO.selectSampleList(vo);
+	List<SampleVO> sampleList = (List) request.getAttribute("sampleList");
 
 	// 2. 응답 화면 구성
 %>
