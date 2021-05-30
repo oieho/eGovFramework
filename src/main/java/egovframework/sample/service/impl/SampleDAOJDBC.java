@@ -35,9 +35,9 @@ public class SampleDAOJDBC implements SampleDAO {
 		System.out.println("===> JDBC로 insertSample() 기능 처리");
 		conn = JDBCUtil.getConnection();
 		stmt = conn.prepareStatement(SAMPLE_INSERT);
-		stmt.setString(1,  vo.getTitle());
-		stmt.setString(2,  vo.getRegUser());
-		stmt.setString(3,  vo.getContent());
+		stmt.setString(1, vo.getTitle());
+		stmt.setString(2, vo.getRegUser());
+		stmt.setString(3, vo.getContent());
 		stmt.executeUpdate();
 		JDBCUtil.close(stmt,  conn);
 	}
