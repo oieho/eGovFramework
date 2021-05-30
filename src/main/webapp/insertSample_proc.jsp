@@ -20,7 +20,7 @@
 	sampleDAO.insertSample(vo);
 	
 	// 3. 화면 네비게이션
-	response.sendRedirect("selectSampleList.jsp");
+	response.sendRedirect("selectSampleList.do");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

@@ -1,16 +1,6 @@
-<%@page import="egovframework.sample.service.impl.SampleDAOJDBC" %>
-<%@page import="egovframework.sample.service.SampleVO" %>
-<%@page import="java.util.List" %>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<% 
-	// 1. DB 연동 처리
-	List<SampleVO> sampleList = (List) request.getAttribute("sampleList");
-
-	// 2. 응답 화면 구성
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,16 +18,15 @@
 	<th bgcolor="orange" width="60">등록일</th>
 </tr>
 
-<% for(SampleVO sample : sampleList) { %>
+<c:forEach var="sample" items="${sampleList }">
 <tr>
-	<td align="center"><a href="selectSample.jsp?id=<%= sample.getId() %>">
-	<%= sample.getId() %>
-	</a></td>
-	<td align="center"><a href="selectSample.jsp?id=<%= sample.getId() %>"><%= sample.getTitle() %></a></td>
-	<td align="center"><%= sample.getRegUser() %></td>
-	<td align="center"><%= sample.getRegDate() %></td>
+	<td align="center"><a href="selectSample.do?id=${sample.id }">
+	${sample.id }</a></td>
+	<td align="center"><a href="selectSample.do?id=${sample.id }">${sample.title }</a></td>
+	<td align="center">${sample.regUser }</td>
+	<td align="center">${sample.regDate }</td>
 </tr>
-<% } %>
+</c:forEach>
 </table>
 <br>
 <a href="insertSample.jsp">샘플 등록</a>
