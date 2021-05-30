@@ -2,6 +2,7 @@ package egovframework.sample.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import egovframework.sample.service.SampleVO;
@@ -10,8 +11,18 @@ import egovframework.sample.service.impl.SampleDAOJDBC;
 @Controller
 public class SampleController {
 	
-	@RequestMapping(value="/insertSample.do")
+	@RequestMapping(value="/insertSample.do", method=RequestMethod.GET)
+	public String insertSampleView(SampleVO vo) throws Exception {
+		System.out.println("등록 화면으로 이동");
+		vo.setTitle("SAMPLE 등록입니다.");
+		vo.setRegUser("테스터");
+		vo.setContent("SAMPLE 등록 테스트 중입니다.");
+		return "insertSample";
+	}
+	
+	@RequestMapping(value="/insertSample.do", method=RequestMethod.POST)
 	public String insertSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
+		System.out.println("등록 처리");
 		sampleDAO.insertSample(vo);
 		return "forward:selectSampleList.do";
 	}

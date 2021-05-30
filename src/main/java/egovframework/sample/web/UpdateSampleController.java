@@ -13,7 +13,7 @@ import egovframework.sample.service.impl.SampleDAOJDBC;
 //@Controller
 public class UpdateSampleController{
 	
-	@RequestMapping(value="/updateSample.do")
+//	@RequestMapping(value="/updateSample.do")
 	public String UpdateSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
 //		System.out.println("샘플 수정 처리");
 //		

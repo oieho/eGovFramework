@@ -9,7 +9,7 @@ import egovframework.sample.service.impl.SampleDAOJDBC;
 //@Controller
 public class DeleteSampleController {
 
-	@RequestMapping(value="/deleteSample.do")
+//	@RequestMapping(value="/deleteSample.do")
 	public String deleteSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
 //		System.out.println("샘플 삭제 처리");
 //		

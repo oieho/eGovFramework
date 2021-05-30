@@ -11,7 +11,7 @@ import egovframework.sample.service.impl.SampleDAOJDBC;
 //@Controller
 public class InsertSampleController {
 	
-	@RequestMapping(value="/insertSample.do")
+//	@RequestMapping(value="/insertSample.do")
 	public String insertSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
 		System.out.println("샘플 등록 처리");
 		

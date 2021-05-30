@@ -12,7 +12,7 @@ import egovframework.sample.service.impl.SampleDAOJDBC;
 //@Controller
 public class SelectSampleListController {
 	
-	@RequestMapping(value="/selectSampleList.do")
+//	@RequestMapping(value="/selectSampleList.do")
 	public ModelAndView selectSampleList(SampleVO vo, SampleDAOJDBC sampleDAO, ModelAndView mav) throws Exception {
 		mav.addObject("sampleList", sampleDAO.selectSampleList(vo));
 		mav.setViewName("selectSampleList");

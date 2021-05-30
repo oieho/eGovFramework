@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 <!-- HandlerMapping 등록 -->
-<bean id="HandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+<!-- <bean id="HandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 <property name="mappings">
 	<props>
 		<prop key="/selectSampleList.do">selectSampleList</prop>
@@ -16,14 +16,16 @@
 		<prop key="/deleteSample.do">deleteSample</prop>
 	</props>
 </property>
-</bean>
+</bean> -->
+
 
 <!--  Controller 등록 -->
-<bean id="selectSampleList" class="egovframework.sample.web.SelectSampleListController"></bean>
+
+<!-- <bean id="selectSampleList" class="egovframework.sample.web.SelectSampleListController"></bean>
 <bean id="selectSample" class="egovframework.sample.web.SelectSampleController"></bean>
 <bean id="insertSample" class="egovframework.sample.web.InsertSampleController"></bean>
 <bean id="updateSample" class="egovframework.sample.web.UpdateSampleController"></bean>
-<bean id="deleteSample" class="egovframework.sample.web.DeleteSampleController"></bean>
+<bean id="deleteSample" class="egovframework.sample.web.DeleteSampleController"></bean> -->
 
 <context:component-scan base-package="egovframework">
 	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
