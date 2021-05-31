@@ -1,9 +1,10 @@
 package egovframework.sample.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import egovframework.sample.service.SampleVO;
 import egovframework.sample.service.impl.SampleDAOJDBC;
@@ -34,23 +35,24 @@ public class SampleController {
 	}
 	
 	@RequestMapping(value="/deleteSample.do")
-	public String deleteSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
-		sampleDAO.deleteSample(vo);
+	public String deleteSample(@RequestParam(value="id", defaultValue="SAMPLE-00001") String sampleId, SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
+		System.out.println(sampleId + "번 아이디를 가진 샘플을 삭제한다.");
+//		sampleDAO.deleteSample(vo);
 		return "forward:selectSampleList.do";
 	}
 	
 	@RequestMapping(value="/selectSample.do")
-	public ModelAndView selectSample(SampleVO vo, SampleDAOJDBC sampleDAO, ModelAndView mav) throws Exception {
-		mav.addObject("sample", sampleDAO.selectSample(vo));
-		mav.setViewName("selectSample");
-		return mav;
+	public String selectSample(SampleVO vo, SampleDAOJDBC sampleDAO, Model model) throws Exception {
+		model.addAttribute("sample", sampleDAO.selectSample(vo));
+//		mav.setViewName("selectSample");
+		return "selectSample";
 	}
 	
 	@RequestMapping(value="/selectSampleList.do")
-	public ModelAndView selectSampleList(SampleVO vo, SampleDAOJDBC sampleDAO, ModelAndView mav) throws Exception {
-		mav.addObject("sampleList", sampleDAO.selectSampleList(vo));
-		mav.setViewName("selectSampleList");
-		return mav;		
+	public String selectSampleList(SampleVO vo, SampleDAOJDBC sampleDAO, Model model) throws Exception {
+		model.addAttribute("sampleList", sampleDAO.selectSampleList(vo));
+//		mav.setViewName("selectSampleList");
+		return "selectSampleList";		
 	}
 	
 }
