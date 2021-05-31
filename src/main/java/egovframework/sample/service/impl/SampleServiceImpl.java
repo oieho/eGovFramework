@@ -17,7 +17,7 @@ import egovframework.sample.service.SampleVO;
 @Service("sampleService")
 public class SampleServiceImpl extends EgovAbstractServiceImpl implements SampleService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SampleServiceImpl.class);
-	@Resource(name="daoSpring")
+	@Resource(name="daoIBatis")
 	private SampleDAO sampleDAO;
 	
 	@Resource(name="egovIdGnrService")
