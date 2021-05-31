@@ -1,16 +1,27 @@
 package egovframework.sample.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import egovframework.sample.service.SampleVO;
 import egovframework.sample.service.impl.SampleDAOJDBC;
 
 @Controller
 public class SampleController {
+	
+	@ModelAttribute("conditionMap")
+	public Map<String, String> searchConditionMap() {
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("내용", "CONTENT");
+		return conditionMap;
+	}
 	
 	@RequestMapping(value="/insertSample.do", method=RequestMethod.GET)
 	public String insertSampleView(SampleVO vo) throws Exception {
@@ -35,9 +46,8 @@ public class SampleController {
 	}
 	
 	@RequestMapping(value="/deleteSample.do")
-	public String deleteSample(@RequestParam(value="id", defaultValue="SAMPLE-00001") String sampleId, SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
-		System.out.println(sampleId + "번 아이디를 가진 샘플을 삭제한다.");
-//		sampleDAO.deleteSample(vo);
+	public String deleteSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
+		sampleDAO.deleteSample(vo);
 		return "forward:selectSampleList.do";
 	}
 	

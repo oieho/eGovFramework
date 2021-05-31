@@ -10,6 +10,22 @@
 </head>
 <body>
 <center>
+<h1>SAMPLE 목록</h1>
+
+<!-- 검색 시작 -->
+<form action="selectSampleList.do" method="post">
+<table border="1" cellpadding="0" cellspacing="0" width="800">
+<tr>
+	<td align="right">
+		<select name="searchCondition">
+		<c:forEach items="${conditionMap}" var="option">
+			<option value="${option.value}">${option.key}
+		</c:forEach>
+		</select>
+		<input name="searchKeyword" type="text" />
+		<input type="submit" value="검색 " />
+</table>
+</form>
 <table border="1" cellpadding="0" cellspacing="0" width="800">
 <tr>
 	<th bgcolor="orange" width="60">아이디</th>
