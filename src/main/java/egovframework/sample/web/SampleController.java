@@ -42,9 +42,9 @@ public class SampleController {
 	@RequestMapping(value="/insertSample.do", method=RequestMethod.POST)
 	public String insertSample(SampleVO vo) throws Exception {
 		System.out.println("등록 처리");
-		if(vo.getContent() == null || vo.getContent().length() == 0) {
-			throw new IllegalArgumentException("내용이 입력되지 않았습니다.");
-		}
+//		if(vo.getContent() == null || vo.getContent().length() == 0) {
+//			throw new IllegalArgumentException("내용이 입력되지 않았습니다.");
+//		}
 		sampleService.insertSample(vo);
 		return "forward:selectSampleList.do";
 	}
