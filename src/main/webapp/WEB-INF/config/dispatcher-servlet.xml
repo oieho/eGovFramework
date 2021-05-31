@@ -38,4 +38,15 @@
 <property name="prefix" value="/WEB-INF/sample/" />
 <property name="suffix" value=".jsp" />
 </bean>
+
+<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	<property name="exceptionMappings">
+		<props>
+			<prop key="java.lang.IllegalArgumentException">
+			common/illegalArgumentError
+			</prop>
+		</props>
+	</property>
+	<property name="defaultErrorView" value="common/error" />
+</bean>
 </beans>
