@@ -22,7 +22,7 @@
 	</tr>
 	<tr>
 		<td bgcolor="orange">작성자</td>
-		<td align="left"><input name="regUser" type="text" value="${sample.regUser }" /></td>
+		<td align="left">${sample.regUser }</td>
 	</tr>
 	<tr>
 		<td bgcolor="orange">내용</td>

@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import egovframework.sample.service.SampleVO;
 import egovframework.sample.service.impl.SampleDAOJDBC;
 
 @Controller
+@SessionAttributes("sample")
 public class SampleController {
 	
 	@ModelAttribute("conditionMap")
@@ -40,7 +42,11 @@ public class SampleController {
 	}
 	
 	@RequestMapping(value="/updateSample.do")
-	public String UpdateSample(SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
+	public String UpdateSample(@ModelAttribute("sample") SampleVO vo, SampleDAOJDBC sampleDAO) throws Exception {
+		System.out.println("< 수정되는 샘플 정보 >");
+		System.out.println("제목 : " + vo.getTitle());
+		System.out.println("작성자 : " + vo.getRegUser());
+		System.out.println("내용 : " + vo.getContent());
 		sampleDAO.updateSample(vo);
 		return "forward:selectSampleList.do";
 	}
