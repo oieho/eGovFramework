@@ -6,5 +6,5 @@
 <bean id="sqlMapClient" class="egovframework.rte.psl.orm.ibatis.SqlMapClientFactoryBean">
 	<property name="configLocation" value="classpath:/egovframework/sqlmap/sql-map-config.xml" />
 	<property name="dataSource" ref="dataSource" />	
-</bean>						
+</bean>
 </beans>
